@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 def dashboard(req):
-  pass
+  return render(req, 'pies/dashboard.html')
 
 def list_pies(req):
   pass
