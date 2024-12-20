@@ -21,5 +21,5 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('my_auth.urls')),
-    path('', RedirectView.as_view(pattern_name='my_auth_signin'))
+    path('dashboard/', RedirectView.as_view(pattern_name='my_auth_signin'))
 ]
