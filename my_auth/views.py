@@ -24,15 +24,5 @@ class SignupView(FormView):
         form.save()
         return redirect(self.success_url)
 
-class PasswordResetView(auth_views.PasswordResetView):
-    template_name = 'my_auth/reset_password.html'
-    form_class = PasswordResetForm
-    success_url = reverse_lazy('my_auth_password_reset_confirm')
-
-class SetPasswordView(auth_views.PasswordResetConfirmView):
-    template_name = 'my_auth/set_password.html'
-    form_class = SetPasswordForm
-    success_url = reverse_lazy('my_auth_signin')
-
 def success_view(req):
     return render(req, 'my_auth/success.html')
