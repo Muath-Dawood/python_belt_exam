@@ -1,11 +1,55 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-    {% if user.is_authenticated %}
-      <h2 class="mb-4">Successfully Signed In!</h2>
-    {% else %}
-      <h2 class="mb-4">Successfully Signed Out!</h2>
+<div class="row mt-4">
+  <div class="col-sm text-center">
+    <h3 class="mb-4 text-left">Pies by {{ user.first_name }}</h3>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for pie in pies %}
+        <tr>
+          <td>{{ pie.name }}</td>
+          <td>
+            <a href="/pie/eidt/{{ pie.id }}/">edit</a>
+            |
+            <a href="/pie/delete/{{ pie.id }}/"></a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm text-left">
+    <h3 class="mb-4 text-left">Add a New Pie</h3>
+    <form action="/pies/add/" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Filling</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Crust</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Pie</button>
+      {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li class="error">{{ message }}</li>
+        {% endfor %}
+      </ul>
     {% endif %}
+    </form>
+  </div>
 </div>
 {% endblock %}
