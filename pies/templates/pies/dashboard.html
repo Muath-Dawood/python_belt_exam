@@ -16,9 +16,9 @@
         <tr>
           <td>{{ pie.name }}</td>
           <td>
-            <a href="/pie/eidt/{{ pie.id }}/">edit</a>
+            <a href="/pies/edit/{{ pie.id }}/">edit</a>
             |
-            <a href="/pie/delete/{{ pie.id }}/"></a>
+            <a href="/pies/delete/{{ pie.id }}/">delete</a>
           </td>
         </tr>
       {% endfor %}
@@ -31,25 +31,26 @@
       {% csrf_token %}
       <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="text" name="name" class="form-control" id="exampleInputEmail1">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Filling</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input type="text" name="filling" class="form-control" id="exampleInputPassword1">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Crust</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input type="text" name="crust" class="form-control" id="exampleInputPassword1">
       </div>
       <button type="submit" class="btn btn-primary">Add Pie</button>
       {% if messages %}
       <ul>
         {% for message in messages %}
-          <li class="error">{{ message }}</li>
+          <li class="text-danger">{{ message }}</li>
         {% endfor %}
       </ul>
     {% endif %}
     </form>
   </div>
 </div>
+<a href="/pies/">Go to All Pies</a>
 {% endblock %}

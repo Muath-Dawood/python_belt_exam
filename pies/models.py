@@ -7,11 +7,11 @@ class PieManager(models.Manager):
   def validate_pie_data(self, post_data):
     errors = {}
     if not post_data['name']:
-      errors['no_title'] = "You must fill the Name field!"
+      errors['no_name'] = "You must fill the Name field!"
     if not post_data['filling']:
-      errors['no_network'] = "You must fill the Filling field!"
-    if not post_data['release_date']:
-      errors['no_release_date'] = "You must fill the Crust field!"
+      errors['no_filling'] = "You must fill the Filling field!"
+    if not post_data['crust']:
+      errors['no_crust'] = "You must fill the Crust field!"
     return errors
 
 class Pie(models.Model):

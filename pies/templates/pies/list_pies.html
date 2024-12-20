@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mt-4">
+  <div class="col-sm text-center">
+    <h3 class="mb-4 text-left">All Pies</h3>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Baker</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for pie in pies %}
+        <tr>
+          <td><a href="/pies/{{ pie.id }}">{{ pie.name }}</a></td>
+          <td>{{ pie.user.first_name }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<a href="/dashboard/">Back to My Pies</a>
+{% endblock %}

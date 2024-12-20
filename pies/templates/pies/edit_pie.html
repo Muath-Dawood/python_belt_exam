@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="col-sm text-left m-4">
+    <h3 class="mb-4 text-center">Edit {{ pie.name }} Pie</h3>
+    <form action="/pies/edit/{{ pie.id }}/" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="text" name="name" class="form-control" id="exampleInputEmail1" value="{{ pie.name }}">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Filling</label>
+        <input type="text" name="filling" class="form-control" id="exampleInputPassword1" value="{{ pie.filling }}">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Crust</label>
+        <input type="text" name="crust" class="form-control" id="exampleInputPassword1" value="{{ pie.crust }}">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Pie</button>
+      {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li class="error">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    </form>
+  </div>
+</div>
+<a href="/dashboard/" class="m-4">Back to My Pies</a>
+{% endblock %}
