@@ -128,4 +128,3 @@ AUTH_USER_MODEL = 'my_auth.User'
 # setting for django-crispy-forms to use bootstarp
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
-
